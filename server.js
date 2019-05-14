@@ -1,26 +1,18 @@
-//Hoisting
+const express = require('express');
 
-const http = require('http');
-const porta = 3000;
+const servidor = express();
 
-//Request listener
-const servidor = http.createServer(
-    function responseFromServer(request, response){
-        if(request.url === '/'){
-            response.end("<h1>Home</h1>");
-        }
-        else if(request.url === '/produtos'){
-            response.end("Produtos");
-        }
-        
-        response.statusCode = 404;
-        response.end("404");
-    });
+//const porta = process.env.PORTA == undefined ? 3000 : process.env.PORTA;
+const porta = process.env.PORTA || 3000;
 
-//Handler
-//Função de callback
-servidor.listen(porta, function(){
-    console.log("Server rodando na porta: "+ porta);
+servidor.get('/', function getHome(request, resposta){
+    resposta.end('Home');
 });
 
-//server.adress().port ele mostra a porta do server escolhida pelo node
+servidor.get('/produtos', function getProdutos(request, resposta){
+    resposta.end('Produtos');
+});
+
+servidor.listen(porta, function(){
+    console.log("Servidor rodando na porta " + porta);
+});
