@@ -7,12 +7,13 @@ const porta = 3000;
 const servidor = http.createServer(
     function responseFromServer(request, response){
         if(request.url === '/'){
-            response.end("Home");
+            response.end("<h1>Home</h1>");
         }
-        if(request.url === '/produtos'){
+        else if(request.url === '/produtos'){
             response.end("Produtos");
         }
-    
+        
+        response.statusCode = 404;
         response.end("404");
     });
 
