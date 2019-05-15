@@ -13,3 +13,5 @@ express.get - cria a rota e qual vai ser o retorno
 
 .end - faz parte do módulo http
 .send - avalia o conteúdo e envia via protocolo http pro browser
+
+require executa o código, o módulo
