@@ -4,11 +4,11 @@ module.exports = function (servidor) {
     servidor.get('/produtos', function getProdutos(req, res){
 
     const conexao = mysql.createConnection({
-        host: "tcp://0.tcp.ngrok.io",
+        host: "localhost",
         user: "root",
         password: "",
         database: "cdc",
-        port: 18195
+        port: 3306
     });
 
     conexao.query("SELECT * FROM livros", function respondeBanco(erro, resposta){
