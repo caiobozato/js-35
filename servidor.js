@@ -1,25 +1,11 @@
 const express = require('express');
 const servidor = express();
 
-servidor.get('/', function getHome(request, resposta){
-    resposta.render('index.ejs');
-}); //Renderiza o html do template EJS, na pasta views
+servidor.set("view engine", "ejs");
 
-servidor.get('/produtos', function getProdutos(request, resposta){
-    const listaLivros = [
-        {
-            'titulo': 'Android',
-            'preco': 22,
-            'descricao': 'Livro teste'
-        },
-        {
-            'titulo': 'MacOS',
-            'preco': 45,
-            'descricao': 'Livro teste 2'
-        }
-    ]
-    resposta.render('produtos/lista.ejs', {livros: listaLivros});
-});//Renderiza o lista.ejs com os valores passado em listaLivros
+require('./routes/home')(servidor);//no require eu estou recebendo a função da rota, e logo após estou executando a mesma, passando o servidor como parametro
+
+require('./routes/produtos')(servidor);
 
 servidor.use(express.static('./static')); //Carrega os arquivos CSS e JS
 
