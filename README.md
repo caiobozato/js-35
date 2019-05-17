@@ -45,3 +45,11 @@ query
 - Cada instancia do node tem uma thread principal e a thread secundária (de eventos)
 
 - Cada requisição fica na fila de thread de eventos (event loop), a saída é pela ordem do termino do processamento
+
+- Escopo léxico, escopo dinamico
+
+- Quando eu faço um POST, nao posso renderizar diretamente a pagina. Devo redirecionar para o get da pagina que eu estou voltando
+
+- createPool - ele conecta igual o createConnection, porém ele faz dentro do limite da instancia
+
+- query precisa de callback
